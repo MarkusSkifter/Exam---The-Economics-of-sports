@@ -2,31 +2,93 @@
 % 5. RESULTS
 % --------------------------------------------------
 \section{Results}
+\label{sec:results}
 
 \subsection{Basic Cox Model}
-\begin{itemize}
-    \item Present Table~2 (basic Cox PH results). Focus the discussion on:
-    \begin{itemize}
-        \item \textbf{Previous DNF rate}: HR $= 1.549$, $p < 0.001$. Strongest predictor. Interpret as: riders with higher historical abandonment rates face approximately 55\% higher hazard of abandoning again. Economically, this captures rider-specific expected continuation cost or revealed fragility.
-        \item \textbf{GC contender}: HR $= 1.156$, $p = 0.008$. Counterintuitively positive. Discuss possible explanations: GC contenders ride at the physical limit and are more exposed to crashes and fatigue; teams may strategically withdraw contenders who fall out of GC contention to preserve them for future races.
-        \item \textbf{Tour de France}: HR $= 0.865$, $p = 0.002$. Riders are \emph{less} likely to abandon the Tour. Consistent with higher event value: the Tour offers the most prize money, media exposure, and UCI points, so riders and teams tolerate higher short-run costs.
-        \item Other variables (age, experience, team controls, year trend) are insignificant, which itself is informative.
-    \end{itemize}
-    \item Include Figure~5 (hazard ratio forest plot).
-\end{itemize}
+
+Table~\ref{tab:cox_basic} reports the estimated hazard ratios from the basic Cox PH model. Of the nine covariates included, two are statistically significant at the 1\% level and one at the 5\% level. The remaining six covariates, including age, experience, team controls, the Giro d'Italia dummy, and the year trend, are not statistically distinguishable from zero, a finding that is itself informative and is discussed below.
+
+\begin{table}[H]
+\centering
+\caption{Basic Cox proportional hazard model. The outcome is rider abandonment. Hazard ratios above 1 indicate higher abandonment risk; below 1 indicate lower risk. Significance: *** $p<0.001$, ** $p<0.01$.}
+\label{tab:cox_basic}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{} lrrrr @{}}
+\toprule
+Variable & Hazard Ratio & 95\% CI & $p$-value & \\
+\midrule
+Age                 & 0.998 & [0.988, 1.009] & 0.736 & \\
+Experience          & 1.004 & [0.994, 1.015] & 0.424 & \\
+Previous DNF rate   & 1.549 & [1.316, 1.822] & $<$0.001 & *** \\
+GC contender        & 1.156 & [1.040, 1.286] & 0.008 & ** \\
+Team size           & 0.992 & [0.903, 1.090] & 0.872 & \\
+Team average age    & 0.987 & [0.963, 1.011] & 0.291 & \\
+Tour de France      & 0.865 & [0.790, 0.946] & 0.002 & ** \\
+Giro d'Italia       & 1.065 & [0.977, 1.161] & 0.150 & \\
+Year (centred)      & 0.999 & [0.989, 1.009] & 0.836 & \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Baseline race: Vuelta a Espa\~{n}a. $N = 9{,}045$ rider-race observations.}
+\end{tabular}
+\end{table}
+
+The strongest predictor of abandonment is the previous DNF rate, with a hazard ratio of 1.549 ($p < 0.001$). This implies that a rider whose historical abandonment rate is one standard deviation higher than average (approximately 22.6 percentage points, based on Table~\ref{tab:summary}) faces a hazard of abandonment roughly 35\% higher in the current race.\footnote{The effect of a one-SD increase is approximately $1.549^{0.226} \approx 1.10$, but the coefficient itself is reported per unit (i.e.\ moving from a 0\% to 100\% historical DNF rate). For interpretive purposes, the HR of 1.549 is most naturally read as a comparison between a rider who has never abandoned and one who has always abandoned.} This finding is consistent with two complementary economic interpretations. First, past abandonment reveals information about a rider's physical constitution and injury history, capturing a latent characteristic that makes continuation costly in future races. Second, from a labour market signalling perspective \parencite{kahn2000labormarket}, a high historical DNF rate is a negative performance signal that may itself reflect career-stage dynamics: riders who have already signalled fragility may face different incentive structures than those who have maintained clean finishing records.
+
+The GC contender dummy has a hazard ratio of 1.156 ($p = 0.008$), indicating that riders classified as GC contenders face approximately 16\% higher abandonment hazard than non-GC riders. This is at first counterintuitive: one might expect that riders with higher expected returns from the GC classification (prize money, UCI points, media exposure, contract value) would be more motivated to continue. Two mechanisms can reconcile the positive coefficient with the incentive framework. First, GC contenders ride at or near their physiological ceiling throughout the race, making them more vulnerable to crashes, illness, and accumulated fatigue. The marginal cost of continuation is therefore higher for GC contenders than for domestiques who pace themselves. Second, teams may strategically withdraw GC contenders who have fallen out of overall contention in order to preserve them for future races or other objectives. In the tournament theory framework of \textcite{lazear1981rank}, the expected prize from the current contest diminishes sharply once a GC contender falls too far behind the leader, and the rational response is to exit and direct effort elsewhere. Both channels predict a positive hazard ratio for GC contenders, so the result is consistent with the theoretical framework even if it cannot distinguish between these two mechanisms.
+
+The Tour de France dummy has a hazard ratio of 0.865 ($p = 0.002$), meaning that riders in the Tour face roughly 14\% lower abandonment hazard than comparable riders in the Vuelta. This finding is consistent with the event-value hypothesis: the Tour de France offers substantially higher prize money, generates greater media coverage, attracts more sponsors, and carries more UCI ranking points than either the Giro or the Vuelta. As a result, the economic returns from finishing and performing well are higher, which reduces the incentive to abandon. This interpretation connects directly to the media economics framework discussed in Lecture F3: the Tour's dominant position in cycling's television rights and sponsorship market translates into higher marginal revenue product for riders who appear prominently in Tour broadcasts, making abandonment more costly. The Giro d'Italia coefficient (HR $= 1.065$, $p = 0.150$) is positive but not significant, suggesting it does not differ systematically from the Vuelta once rider characteristics are controlled for.
+
+The insignificance of age, experience, team size, and team average age suggests that, conditional on the GC contender classification and the historical DNF rate, these demographic and structural controls do not independently predict abandonment. The flat year trend indicates no systematic change in abandonment behaviour over the 2010 to 2025 sample period, which is reassuring: the results do not appear to be driven by time-varying confounders such as changing race difficulty or field composition.
+
+Figure~\ref{fig:hazard_ratios} displays the hazard ratios with 95\% confidence intervals in a forest plot, providing a visual summary of the direction and precision of each estimate.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Afsnit/Billeder/fig5_hazard_ratios.png}
+    \caption{Hazard ratios with 95\% confidence intervals from the basic Cox PH model. Points to the right of the vertical line at 1.0 indicate higher abandonment hazard; points to the left indicate a protective effect. Only the previous DNF rate (positive), GC contender (positive), and Tour de France dummy (negative) are statistically significant.}
+    \label{fig:hazard_ratios}
+\end{figure}
 
 \subsection{Time-Varying Cox Model}
-\begin{itemize}
-    \item Present Table~3 (time-varying Cox results). Highlight:
-    \begin{itemize}
-        \item \textbf{Mountain stages}: HR $= 1.034$, $p = 0.025$. Abandonment hazard rises on mountain stages, consistent with a marginal-cost-of-effort interpretation.
-        \item \textbf{Previous DNF rate}: marginally significant ($p = 0.05$) with a smaller coefficient, suggesting that within-race stage-level variation absorbs some of the rider-level effect.
-        \item GC contender and race dummies lose significance once stage-level controls are included, which suggests the basic model captured some of the race-difficulty effect through the race dummies.
-    \end{itemize}
-\end{itemize}
+
+Table~\ref{tab:cox_timevarying} extends the basic model by adding stage-level covariates that vary within a race. The key question is whether stage difficulty, as measured by stage type and distance, predicts abandonment independently of the rider-level characteristics already captured by the basic model.
+
+\begin{table}[H]
+\centering
+\caption{Time-varying Cox proportional hazard model. Stage-type dummies and standardised distance are entered as time-varying covariates. Significance: * $p<0.05$, $\dagger$ $p=0.05$.}
+\label{tab:cox_timevarying}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{} lrrrr @{}}
+\toprule
+Variable & Hazard Ratio & 95\% CI & $p$-value & \\
+\midrule
+Age                 & 1.000 & [0.996, 1.003] & 0.923 & \\
+Experience          & 1.000 & [0.997, 1.004] & 0.814 & \\
+Previous DNF rate   & 1.067 & [1.000, 1.137] & 0.050 & $\dagger$ \\
+GC contender        & 1.020 & [0.980, 1.061] & 0.341 & \\
+Team size           & 1.000 & [0.972, 1.029] & 0.995 & \\
+Tour de France      & 0.981 & [0.951, 1.011] & 0.215 & \\
+Giro d'Italia       & 1.015 & [0.985, 1.047] & 0.335 & \\
+Year (centred)      & 1.000 & [0.997, 1.003] & 0.943 & \\
+Stage: hilly        & 0.997 & [0.964, 1.032] & 0.885 & \\
+Stage: mountain     & 1.034 & [1.004, 1.064] & 0.025 & * \\
+Stage: indiv.\ TT   & 0.965 & [0.915, 1.019] & 0.198 & \\
+Stage: team TT      & 0.965 & [0.879, 1.059] & 0.454 & \\
+Distance (z)        & 1.012 & [0.997, 1.027] & 0.111 & \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Baseline stage type: flat. Baseline race: Vuelta a Espa\~{n}a.}
+\end{tabular}
+\end{table}
+
+Mountain stages are the only stage type that significantly predicts abandonment, with a hazard ratio of 1.034 ($p = 0.025$). Although the effect is modest in magnitude, its direction is consistent with a marginal-cost-of-effort interpretation: mountain stages impose higher physical demands and therefore raise the instantaneous probability that a rider abandons on that day. Hilly stages, time trials, and standardised distance are not significant, suggesting that it is the extreme terrain of mountain stages rather than distance per se that drives the stage-level effect.
+
+A notable pattern in Table~\ref{tab:cox_timevarying} is that once stage-type controls are included, several rider-level predictors that were significant in the basic model lose their significance. The GC contender dummy falls from HR $= 1.156$ ($p = 0.008$) to HR $= 1.020$ ($p = 0.341$), and the Tour de France dummy falls from HR $= 0.865$ ($p = 0.002$) to HR $= 0.981$ ($p = 0.215$). This suggests that part of what the basic model captured through these variables was actually the correlation between race identity and stage-level difficulty: mountain-heavy editions and races with more mountainous routes had both higher GC contender exposure and higher abandonment rates. Once the model controls directly for whether a given stage is a mountain stage, the race-level and rider-type effects are largely absorbed.
+
+The previous DNF rate coefficient shrinks substantially from HR $= 1.549$ to HR $= 1.067$ and becomes only marginally significant ($p = 0.050$). This attenuation is partly mechanical: the time-varying model estimates the effect of covariates on the daily abandonment hazard rather than the race-level hazard, and stage-level covariates absorb variation that is otherwise attributed to rider-level characteristics. The coefficient remains positive, which is consistent with the interpretation that a rider's historical abandonment tendency still predicts current-race abandonment even after controlling for the specific stage conditions they face.
 
 \subsection{Economic Interpretation}
-\begin{itemize}
-    \item Tie the results back to the theoretical framework: the data are consistent with a model where abandonment is a rational response to the balance of incentives and costs.
-    \item Discuss the language carefully: ``consistent with,'' ``suggests,'' ``can be interpreted as,'' ``proxies for'' --- because no direct financial variables are observed.
-\end{itemize}
+
+Taken together, the two models tell a consistent story. Abandonment in Grand Tours is shaped by a combination of rider-specific characteristics and race-level incentives, in a way that is broadly consistent with the cost-benefit framework outlined in Section~\ref{sec:theory}. Riders with higher historical DNF rates, who can be interpreted as having higher expected continuation costs, face elevated abandonment hazard. The Tour de France, which offers the highest economic returns in the sport, generates lower abandonment rates, consistent with the prediction that higher incentives reduce the probability of exit. Mountain stages raise the marginal cost of continuation on a given day, and this within-race variation in physical demands helps explain part of the overall abandonment pattern.
+
+It is important to be clear about what the data cannot establish. Because no direct financial variables are observed, the results are consistent with the economic framework but do not prove a causal mechanism. The previous DNF rate may proxy for physical fragility, for contractual incentives, or for some combination of the two. The Tour de France coefficient may reflect the incentive structure, but it may also reflect differences in team composition, route planning, or field quality that are correlated with race identity. The results should be read as suggestive evidence that economic incentives and costs are plausible explanations for abandonment patterns, not as a definitive causal decomposition of the underlying decision.

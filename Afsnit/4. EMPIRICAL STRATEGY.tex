@@ -1,22 +1,54 @@
+% --------------------------------------------------
+% 4. EMPIRICAL STRATEGY
+% --------------------------------------------------
 \section{Empirical Strategy}
+\label{sec:empirical_strategy}
 
 \subsection{Cox Proportional Hazard Model}
-\begin{itemize}
-    \item Justify the choice of a Cox PH model: semi-parametric, does not require distributing the baseline hazard, handles right-censoring (riders who finish), and naturally models duration dependence.
-    \item Write out the hazard function: $h(t \mid \mathbf{X}) = h_0(t) \exp(\mathbf{X} \boldsymbol{\beta})$, and explain interpretation of hazard ratios ($\exp(\beta) > 1$ means higher abandonment hazard).
-    \item Explain the covariates used in the basic model: age, experience, previous DNF rate, GC contender, team size, team average age, race dummies, and a centred year trend.
-\end{itemize}
+
+The central methodological choice in this paper is the Cox proportional hazard (PH) model \parencite{cox1972regression, cleves2010survival}. The model is well suited to the structure of the data for three reasons. First, it is semi-parametric: it does not require a parametric assumption about the shape of the baseline hazard, which is left unspecified. This is important because there is no strong theoretical prior about whether abandonment risk should follow, for example, a Weibull or exponential distribution over the stages of a Grand Tour. Second, the Cox model naturally handles right-censoring: riders who complete all 21 stages have not abandoned, and the model correctly accounts for them as observations for whom the event did not occur within the observed window. Third, the model captures duration dependence through the shared baseline hazard, allowing the risk of abandonment to evolve across stages without imposing a particular functional form.
+
+The hazard function for rider $i$ at stage $t$ is specified as:
+\begin{equation}
+    h(t \mid \mathbf{X}_i) = h_0(t) \exp\!\left(\mathbf{X}_i \boldsymbol{\beta}\right),
+\end{equation}
+where $h_0(t)$ is the unspecified baseline hazard common to all riders, $\mathbf{X}_i$ is a vector of covariates, and $\boldsymbol{\beta}$ is the vector of log-hazard coefficients to be estimated. The key quantity of interest is the hazard ratio $\exp(\beta_k)$: a value above 1 indicates that a one-unit increase in covariate $k$ is associated with a higher instantaneous probability of abandonment, and a value below 1 indicates a protective effect.
+
+The basic model includes the following covariates: rider age at race start and number of previous Grand Tours started (proxies for human capital and durability), historical DNF rate (a backward-looking measure of rider-specific expected continuation cost), a binary GC contender indicator (a proxy for tournament incentives), team size and team average age (controls for team resources), race dummies for the Tour de France and Giro d'Italia with the Vuelta as the baseline (event-value proxies), and a centred calendar year trend to capture any secular changes in abandonment behaviour over the sample period.
 
 \subsection{Time-Varying Extension}
-\begin{itemize}
-    \item Explain why stage-level covariates require a time-varying Cox model: the difficulty of the race changes from stage to stage, and abandonment hazard is not constant within a race.
-    \item Describe the additional time-varying covariates: stage type dummies (mountain, hilly, individual TT, team TT vs.\ flat baseline) and standardised stage distance.
-    \item Note the counting-process data structure (start-stop intervals) and the use of \texttt{CoxTimeVaryingFitter}.
-\end{itemize}
+
+A limitation of the basic model is that it assigns fixed covariate values to each rider for the entire race. In reality, a key determinant of abandonment risk varies within a race: the difficulty of each stage changes day by day, and riders face systematically higher physical demands on mountain stages than on flat stages or time trials. Treating this within-race variation as constant would misattribute the effect of stage difficulty to other rider-level covariates. To address this, a time-varying Cox model is estimated alongside the basic model.
+
+The time-varying extension adds four stage-type dummies (mountain, hilly, individual time trial, and team time trial, with flat stages as the baseline) and a standardised stage distance variable. These covariates vary from stage to stage and are entered into the model in the counting-process (start-stop) format, where each row of the dataset represents one stage interval for one rider \parencite{cleves2010survival}. The model is estimated using a partial likelihood approach identical to the basic model, but the time-varying covariates allow the covariate vector to differ across stages for the same rider. This structure permits a cleaner test of whether stage-level physical costs affect abandonment hazard, independently of the rider-level characteristics captured by the basic model.
 
 \subsection{Proportional Hazards Assumption}
-\begin{itemize}
-    \item Explain the Schoenfeld residual test for the PH assumption.
-    \item Report results from Table~4: none of the covariates violate the PH assumption at the 5\% level, which validates the model specification.
-    \item Mention the Schoenfeld residual plots (Figure~6) as visual confirmation.
-\end{itemize}
+
+Both models rest on the proportional hazards assumption: the ratio of hazard functions between any two riders is constant over time, meaning that covariate effects do not change as the race progresses. A violation of this assumption would imply that, for example, the effect of being a GC contender differs between the first week and the third week of a Grand Tour in a time-varying way not captured by the stage-type dummies.
+
+The assumption is tested using the method of Schoenfeld residuals \parencite{schoenfeld1982residuals}. Under the null hypothesis of proportional hazards, the Schoenfeld residuals for each covariate should be uncorrelated with time. Table~\ref{tab:schoenfeld} reports the test statistics and p-values for each covariate in the basic model.
+
+\begin{table}[H]
+\centering
+\caption{Schoenfeld residual test of the proportional hazards assumption. No covariate is significant at the 5\% level, indicating that the proportional hazards assumption is not rejected for any variable.}
+\label{tab:schoenfeld}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{} lrr @{}}
+\toprule
+Variable & Test statistic & $p$-value \\
+\midrule
+Age                 & 0.865 & 0.352 \\
+Experience          & 0.242 & 0.623 \\
+Previous DNF rate   & 0.034 & 0.854 \\
+GC contender        & 0.078 & 0.780 \\
+Team size           & 0.575 & 0.448 \\
+Team average age    & 1.904 & 0.168 \\
+Tour de France      & 0.871 & 0.351 \\
+Giro d'Italia       & 1.075 & 0.300 \\
+Year (centred)      & 0.638 & 0.424 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+None of the covariates is significant at the 5\% level, providing no statistical evidence against the proportional hazards assumption. The largest test statistic belongs to team average age ($\chi^2 = 1.90$, $p = 0.168$), which remains comfortably non-significant. Figure~\ref{fig:schoenfeld} in the Appendix shows the Schoenfeld residual plots for each covariate, confirming visually that there is no systematic trend in the residuals over time. The proportional hazards assumption is therefore maintained throughout the analysis.

@@ -29,8 +29,8 @@ To answer this question, the paper draws on a self-constructed panel dataset of 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Afsnit/Billeder/fig2_dnf_rate_by_race_year.png}
-    \caption{Caption}
-    \label{fig:placeholder}
+    \caption{DNF rate by Grand Tour and year (2010--2025). The Tour de France consistently shows the lowest abandonment rate, while the Giro d'Italia typically shows the highest. Year-to-year variation reflects differences in route difficulty, weather, and race-specific incidents.}
+    \label{fig:dnf_by_year}
 \end{figure}
 
 The econometric approach uses Cox proportional hazard models, a standard survival-analysis framework that models the instantaneous probability of abandonment at each stage, conditional on the rider still being in the race. The basic model includes rider-level and race-level covariates such as age, experience, previous DNF rate, GC contender status, and race identity. A time-varying extension adds stage-level covariates---stage type (mountain, hilly, time trial) and distance---that change from stage to stage within a race. The proportional hazards assumption is tested using Schoenfeld residuals, and a set of robustness checks splits the sample into GC contenders and non-GC riders to examine whether the estimated effects differ across these groups.

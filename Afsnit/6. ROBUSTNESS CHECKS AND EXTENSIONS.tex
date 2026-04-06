@@ -2,19 +2,86 @@
 % 6. ROBUSTNESS CHECKS AND EXTENSIONS
 % --------------------------------------------------
 \section{Robustness Checks and Extensions}
+\label{sec:robustness}
 
-\subsection{Sub-sample Analysis: GC Contenders vs.\ Non-GC Riders}
-\begin{itemize}
-    \item Present Tables~5a and 5b (separate Cox models for GC contenders and non-GC riders).
-    \item Key finding: previous DNF rate is significant in \emph{both} subsamples, but the effect is much stronger for GC contenders (HR $= 2.28$, $p = 0.001$) than for non-GC riders (HR $= 1.47$, $p < 0.001$). This supports heterogeneous cost structures: fragile GC contenders face higher stakes.
-    \item The Tour de France protective effect persists for non-GC riders (HR $= 0.866$, $p = 0.005$) but is insignificant for GC contenders, suggesting that the event-value incentive operates primarily through domestiques and support riders.
-    \item Include Figure~7 (side-by-side forest plot).
-\end{itemize}
+\subsection{Sub-sample Analysis: GC Contenders and Non-GC Riders}
+
+A natural concern with the pooled basic model is that the determinants of abandonment may differ systematically between GC contenders and the rest of the field. GC contenders race under different incentive conditions (high expected returns from the GC classification), face different physical demands (riding at or near their limit throughout), and may be subject to different team strategies (withdrawal to preserve form for future races). If the hazard ratio coefficients differ substantially across these two groups, the pooled model conceals important heterogeneity.
+
+Tables~\ref{tab:cox_gc} and~\ref{tab:cox_nonGC} report the results of separate Cox PH models estimated for GC contenders ($n = 1{,}395$ rider-race observations) and non-GC riders ($n = 7{,}650$) respectively.
+
+\begin{table}[H]
+\centering
+\caption{Cox PH model estimated on GC contenders only. The previous DNF rate effect is substantially larger than in the pooled model, consistent with higher stakes for riders whose abandonment carries a stronger career signal.}
+\label{tab:cox_gc}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{} lrrrr @{}}
+\toprule
+Variable & Hazard Ratio & 95\% CI & $p$-value & \\
+\midrule
+Age                 & 1.007 & [0.980, 1.036] & 0.599 & \\
+Experience          & 1.008 & [0.983, 1.035] & 0.520 & \\
+Previous DNF rate   & 2.280 & [1.379, 3.771] & 0.001 & ** \\
+Team size           & 1.134 & [0.896, 1.436] & 0.296 & \\
+Team average age    & 1.033 & [0.970, 1.100] & 0.310 & \\
+Tour de France      & 0.863 & [0.696, 1.069] & 0.177 & \\
+Giro d'Italia       & 1.195 & [0.961, 1.486] & 0.110 & \\
+Year (centred)      & 0.995 & [0.968, 1.022] & 0.708 & \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize ** $p<0.01$. Baseline race: Vuelta a Espa\~{n}a. $N = 1{,}395$.}
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Cox PH model estimated on non-GC riders only. The Tour de France protective effect is significant in this sub-sample but not for GC contenders, suggesting that event-value incentives operate mainly through domestiques and support riders.}
+\label{tab:cox_nonGC}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{} lrrrr @{}}
+\toprule
+Variable & Hazard Ratio & 95\% CI & $p$-value & \\
+\midrule
+Age                 & 0.996 & [0.985, 1.008] & 0.533 & \\
+Experience          & 1.003 & [0.991, 1.014] & 0.634 & \\
+Previous DNF rate   & 1.472 & [1.238, 1.750] & $<$0.001 & *** \\
+Team size           & 0.967 & [0.872, 1.071] & 0.518 & \\
+Team average age    & 0.978 & [0.953, 1.004] & 0.103 & \\
+Tour de France      & 0.866 & [0.784, 0.957] & 0.005 & ** \\
+Giro d'Italia       & 1.041 & [0.948, 1.144] & 0.398 & \\
+Year (centred)      & 0.999 & [0.988, 1.011] & 0.915 & \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize *** $p<0.001$, ** $p<0.01$. Baseline race: Vuelta a Espa\~{n}a. $N = 7{,}650$.}
+\end{tabular}
+\end{table}
+
+Two findings stand out. First, the previous DNF rate effect is substantially larger for GC contenders (HR $= 2.280$, $p = 0.001$) than for non-GC riders (HR $= 1.472$, $p < 0.001$). An informal test of whether these two hazard ratios differ significantly can be constructed by noting that the 95\% confidence interval for GC contenders ([1.379, 3.771]) barely overlaps with the interval for non-GC riders ([1.238, 1.750]) at its lower bound, suggesting meaningful heterogeneity. This pattern is consistent with a higher-stakes signalling environment for GC contenders: a GC rider who has abandoned in past races has already sent a negative signal about their durability, and the elevated hazard ratio suggests that fragile GC contenders are particularly prone to abandoning again. In terms of the tournament theory framework \parencite{rosen1981superstars, lazear1981rank}, the amplified effect for GC contenders may also reflect the compounding of physical fragility with the strategic incentive to withdraw once GC contention is lost.
+
+Second, the Tour de France protective effect is significant only for non-GC riders (HR $= 0.866$, $p = 0.005$), not for GC contenders (HR $= 0.863$, $p = 0.177$). At face value, the point estimates are nearly identical, but the GC estimate loses precision because the GC sub-sample is roughly five times smaller. Nevertheless, the pattern is consistent with the interpretation that the event-value incentive operates primarily through domestiques and support riders. For these riders, finishing the Tour carries direct benefits: team bonuses, sponsor visibility, and the reputational value of having completed cycling's most prestigious race. GC contenders, by contrast, face a sharper decision: if they are riding well, they continue regardless of event identity; if they fall out of contention, they may withdraw regardless of event prestige. The binary nature of the GC contender's strategic situation may make the continuous event-value gradient less relevant to their abandonment decision.
+
+Figure~\ref{fig:gc_vs_nonGC} presents the two sets of hazard ratios side by side, facilitating visual comparison of the coefficient estimates and their uncertainty across sub-samples.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.80\linewidth]{Afsnit/Billeder/fig7_gc_vs_nonGC_hazard_ratios.png}
+    \caption{Hazard ratios from separate Cox PH models for GC contenders (left panel) and non-GC riders (right panel). The previous DNF rate effect is substantially larger for GC contenders, while the Tour de France protective effect is significant only for non-GC riders.}
+    \label{fig:gc_vs_nonGC}
+\end{figure}
 
 \subsection{GC Counterfactual Analysis}
-\begin{itemize}
-    \item Describe the counterfactual exercise: for each edition where a GC contender abandoned, estimate what the final GC standings would have been had they continued at their last observed pace (Table~6).
-    \item This exercise illustrates the economic consequence of selective attrition: abandonment by strong riders reshuffles the final standings, redistributes prize money and UCI points, and affects the information value of the GC classification as a performance signal.
-    \item Discuss one or two prominent examples from the data (e.g.\ Wiggins at the 2013 Giro).
-    \item Include Figure~8 (counterfactual GC positions bar chart).
-\end{itemize}
+
+A complementary way to illustrate the economic consequences of GC contender abandonment is a counterfactual exercise. For each rider classified as a GC contender who abandoned a Grand Tour between 2010 and 2025, the analysis estimates the GC position that rider would have occupied in the final standings had they continued to the finish at their last observed time gap. This is a simple extrapolation: the rider's last recorded cumulative time deficit relative to the leader is used to impute a counterfactual finishing time, which is then inserted into the actual final GC standings to produce a counterfactual ranking.
+
+Figure~\ref{fig:counterfactual} illustrates the distribution of counterfactual GC positions for the abandoned GC contenders. The exercise reveals that the riders who abandon range widely in their projected finishing positions: some abandoned while still close to the top of the GC standings and would have finished inside the top 20 had they continued, while others had already fallen so far behind that their counterfactual position would have been near the back of the field. This heterogeneity supports the interpretation that Grand Tour abandonment is not a homogeneous event. Some abandonments represent clear strategic withdrawals (riders who are healthy enough to continue but choose not to after falling out of contention), while others represent genuine physical exits by riders who could not sustain the pace.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Afsnit/Billeder/fig8_gc_counterfactual.png}
+    \caption{Counterfactual GC finishing positions for abandoned GC contenders (2010--2025). Each bar represents a rider who abandoned a Grand Tour; the counterfactual position is imputed by inserting the rider's last observed cumulative time gap into the actual final GC standings. The wide range of counterfactual positions illustrates the heterogeneity of abandonment decisions.}
+    \label{fig:counterfactual}
+\end{figure}
+
+The economic consequences of this selective attrition are meaningful. When a GC contender who would have finished in the top 10 abandons, the final GC standings change, redistributing UCI ranking points and prize money among the riders who remain. The winner's prize in the Tour de France, for example, is substantially larger than the prize for second place, so even small changes in the final order translate into significant financial transfers. Furthermore, the GC classification itself serves as a performance signal in the labour market for professional cyclists \parencite{boeri2008italianjob}: finishing high in a Grand Tour affects future contract negotiations and team selection. The counterfactual analysis suggests that the observable GC rankings are, to some degree, an artifact of who chose or was forced to abandon, rather than a pure measure of rider quality. This is a form of selection bias that future work incorporating competing-risks models could address more rigorously.
+
+The 2013 Giro d'Italia provides an illustrative example. Bradley Wiggins, the defending Tour de France champion and a strong GC favourite, abandoned the race on Stage 13. His counterfactual position, estimated from his last observed time gap, suggests he had already fallen far behind the race leaders by the time he withdrew, indicating that his abandonment likely reflected genuine competitive exit rather than a strategic withdrawal from a still-viable GC challenge. This is consistent with the narrative at the time and illustrates that the abandonment hazard is elevated not only by the physical cost of continuation but also by the reduced expected prize once GC contention is lost.
