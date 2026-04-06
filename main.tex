@@ -1,0 +1,276 @@
+\documentclass[11pt,reqno, usenames]{report}
+\renewcommand{\rmdefault}{ppl}  % Skifter til Times New Roman
+\usepackage[a4paper, hmargin=2cm, tmargin=2.5cm, bmargin=3cm]{geometry}
+
+% \newtheorem{theorem}{Teorem}[section]
+% \newtheorem{lemma}{Lemma}[section]
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+
+%%%%%%%%%%%%%%%%%%%%% Sætnings design
+
+\usepackage[listings]{tcolorbox} 
+\tcbuselibrary{listings,theorems}
+
+\definecolor{codeblue1}{rgb}{0.404, 0.576, 0.839}
+
+
+% \newtcbtheorem[use counter=theorem, number within=section]{mytheo}{Sætning}%
+% {colback=codeblue!5,              % light blue background
+%  colbacktitle=codeblue1,           % strong blue title bar
+%  colframe=codeblue1,               % blue border
+%  coltitle=white,                  % white text in the title
+%  fonttitle=\bfseries,             % bold title font
+%  title prefix=, title suffix=:,   % format of "Sætning 1:"
+%  title after break = \textit{(fortsat)},
+%  breakable,
+%  enhanced}
+% {th}
+
+\tcbuselibrary{listings,theorems}
+
+\newtcbtheorem{mytheo}{Sætning}%
+{colback=codeblue!5,colframe=codeblue,fonttitle=\bfseries}{th}
+
+
+%%%%%%% tables formatting %%%%%%
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{colortbl}
+\tcbuselibrary{skins}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X} % Centered column type
+
+
+\tcbset{tab1/.style={fonttitle=\bfseries\large,fontupper=\normalsize\sffamily,
+colback=codeblue!10!white,colframe=codeblue!35!black,colbacktitle=codeblue!35!white,
+coltitle=white,center title,freelance,frame code={
+\foreach \n in {north east,north west,south east,south west}
+{\path [fill=codeblue!75!black] (interior.\n) circle (3mm); };},}}
+
+
+\tcbset{tab2/.style={enhanced,fonttitle=\bfseries,fontupper=\normalsize,
+colback=codeblue!10!white,colframe=codeblue!40!black,colbacktitle=codeblue!90!white,
+coltitle=white,center title}}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{xcolor}
+\usepackage{colortbl}
+%\usepackage{cellspace}
+\usepackage{rotating}
+% \setlength\cellspacetoplimit{3pt}
+% \setlength\cellspacebottomlimit{3pt}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+
+% Define colors
+\definecolor{teal}{RGB}{0, 128, 128}
+\definecolor{lightgray}{RGB}{230, 230, 230}
+
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[toc,page]{appendix}
+\usepackage{placeins}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{bm}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+
+\usepackage{float} % for [H]
+\usepackage[style=authoryear, backend=biber, maxnames=2, uniquelist=false]{biblatex}
+\addbibresource{Afsnit/Litteratur.bib}
+\DeclareCiteCommand{\citeyearpar}
+  {\usebibmacro{prenote}\bibopenparen}
+  {\bibhyperref{\printdate}}
+  {\multicitedelim}
+  {\bibcloseparen\usebibmacro{postnote}}
+  
+\pagestyle{fancy}
+\definecolor{cbsblue}{rgb}{0.788, 0.878, 0.961}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+
+
+
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{threeparttablex}
+\usepackage{caption}
+\pgfplotsset{compat=1.18}
+
+\usepackage{threeparttable}
+%%%%%%%%%%%% Linjeafstand %%%%%%%%%%%%
+\onehalfspacing  % 1.5 linjeafstand
+%\doublespacing  % 2.0 linjeafstand
+%\singlespacing  % Normal linjeafstand (standard)
+
+
+\usepackage[]{cbs-forside} %CBS forside
+\title{Incentives, Costs, and Attrition: A Survival Analysis of Rider Abandonment in Grand Tour Cycling (2010--2025)}
+\undertitelI{Student number: S160645}
+\vejleder{Field of study: Cand.merc.mat.}
+\opgave{} 
+\dato{}
+\normalsider{}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{hyperref}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+\setlength{\parindent}{0pt}
+
+
+%%%%%%%%%%%% Sidehoved %%%%%%%%%%%%
+\fancyhf{} % Rens standard sidehoved/fod
+\fancyhead[L]{S160645} % Venstre sidehoved
+\fancyhead[C]{Household behaviour over the lifecycle} % Centreret sidehoved
+\renewcommand{\headrulewidth}{0.1pt} % Linje under sidehovedet
+\setlength{\headsep}{15mm}  %Afstand mellem sidehoved og overskrift
+
+\fancyfoot[C]{\thepage\ of \pageref{LastPage}} % Sidetalformat: 2 af 64
+
+
+
+
+%%%%%%%%%%%% Kommandoer og hotkeys  %%%%%%%%%%%%
+\definecolor{nicered}{rgb}{1, 0, 0}
+\newcommand\Red[1]{\textcolor{nicered}{#1}}
+	%%%Bogstavlignende symboler
+		\newcommand{\mR}{\mathbb{R}}
+		\newcommand{\mZ}{\mathbb{Z}}
+		\newcommand{\mN}{\mathbb{N}}
+		\newcommand{\mQ}{\mathbb{Q}}
+		\newcommand{\mC}{\mathbb{C}}
+		
+		\newcommand{\cA}{\mathcal{A}}
+		\newcommand{\cB}{\mathcal{B}}
+		\newcommand{\cC}{\mathcal{C}}
+		\newcommand{\cD}{\mathcal{D}}
+		\newcommand{\cE}{\mathcal{E}}
+		\newcommand{\cF}{\mathcal{F}}
+		\newcommand{\cG}{\mathcal{G}}
+		\newcommand{\cH}{\mathcal{H}}
+		\newcommand{\cP}{\mathcal{P}}
+		\newcommand{\cN}{\mathcal{N}}
+        \newcommand{\mBF}{\mathbf{}}
+
+	%%%Grænseværdi-shorthands
+		\newcommand{\limn}{\lim_{n\rightarrow \infty}}
+		\newcommand{\forn}{\hspace{10pt} \text{for} \hspace{6pt} n \rightarrow \infty}
+		\newcommand{\konv}[1]{\overset{#1}{\rightarrow}}
+
+
+
+
+\setlength\bibitemsep{0.8em}
+
+% --- Make section numbering independent of chapter (report -> article-like) ---
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+% Numbering format: 1, 1.1, 1.1.1 (no chapter prefix)
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+% Reset section counters if a chapter ever appears (harmless if you never use \chapter)
+\@addtoreset{section}{chapter}
+\@addtoreset{subsection}{chapter}
+\@addtoreset{subsubsection}{chapter}
+
+% Fix hyperref anchors to match
+\renewcommand{\theHsection}{\arabic{section}}
+\renewcommand{\theHsubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\theHsubsubsection}{\thesubsection.\arabic{subsubsection}}
+\makeatother
+
+% eksempel -> \Red{Noget i farver} 
+%%%%%%%%%%%% Dokument begyndelse %%%%%%%%%%%%
+\begin{document}
+
+%%%Forside
+\maketitle
+
+%%% Fixer side hoved og sidetal
+\clearpage
+\pagestyle{fancy}
+\setcounter{page}{1}
+
+
+%%% Fordi vi har chapter så laver de nikke sider der, det fikser vi med dette
+\makeatletter
+\let\ps@plain\ps@fancy
+\makeatother
+
+%%%%%%%%%%%% Indhold %%%%%%%%%%%%
+
+\tableofcontents
+
+\newpage
+
+\input{Afsnit/1. INTRODUCTION}
+
+\newpage
+
+\input{Afsnit/2. THEORETICAL FRAMEWORK AND LITERATURE}
+
+\newpage
+
+\input{Afsnit/3. DATA}
+\newpage
+
+\input{Afsnit/4. EMPIRICAL STRATEGY}
+\newpage
+\input{Afsnit/5. RESULTS}
+
+\newpage
+
+\input{Afsnit/6. ROBUSTNESS CHECKS AND EXTENSIONS}
+%\newpage
+
+%\newpage
+
+%\newpage
+
+\newpage
+
+%Litteraturliste
+\renewcommand{\bibname}{Bibliography}
+\printbibliography
+\newpage
+
+\end{document}

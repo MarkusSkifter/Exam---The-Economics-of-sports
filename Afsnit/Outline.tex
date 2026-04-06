@@ -1,0 +1,135 @@
+% --------------------------------------------------
+% 7. CONCLUSION
+% --------------------------------------------------
+\section{Conclusion}
+
+\begin{itemize}
+    \item Restate the research question and summarise the main findings: previous DNF rate is the dominant predictor of abandonment; the Tour de France has a protective effect consistent with higher event value; mountain stages raise hazard consistent with marginal cost of effort; GC contenders show a counterintuitive positive hazard that reflects strategic withdrawal and physical exposure.
+    \item Discuss limitations: no direct observation of financial variables (prize money, wages, contracts); the GC contender label is a coarse proxy; unobserved team-level strategy; potential selection bias in which riders start Grand Tours.
+    \item Suggest extensions: incorporate prize-money or UCI-points data; add contract-year indicators; use competing-risks models to distinguish crash-related from fatigue-related DNFs; extend to one-week stage races for comparison.
+    \item Closing sentence: tie back to the broader sports-economics literature and the value of using revealed-preference data to study economic decision-making under physical constraints.
+\end{itemize}
+
+
+% --------------------------------------------------
+% REFERENCES
+% --------------------------------------------------
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\begin{itemize}
+    \item Kahn, L.\ M.\ (2000). The sports business as a labor market laboratory. \textit{Journal of Economic Perspectives}, 14(3), 75--94.
+    \item Rosen, S.\ (1981). The economics of superstars. \textit{American Economic Review}, 71(5), 845--858.
+    \item [Add course lecture references: F1--F7]
+    \item [Add any additional references used]
+\end{itemize}
+
+
+% --------------------------------------------------
+% APPENDIX
+% --------------------------------------------------
+\appendix
+\section{Appendix}
+
+\begin{itemize}
+    \item Full regression output tables (if abridged in main text).
+    \item Additional figures: Kaplan--Meier curves (Figure~1), DNF by stage type (Figure~3), cumulative DNF by stage number (Figure~4), Schoenfeld residual plots (Figure~6).
+    \item Description of the web-scraping procedure and data-cleaning steps.
+    \item Full counterfactual GC standings table (Table~6, if too long for main text).
+\end{itemize}
+
+
+% ============================================================
+% REASONING FOR STRUCTURAL CHOICES (outcommented)
+% ============================================================
+
+\begin{comment}
+
+WHY THIS STRUCTURE?
+
+1. The exam document (KAN-CGMAV1006U) requires: Introduction, Chapters,
+   Conclusion, References, and optionally Appendixes. This outline follows
+   that structure exactly, with the "Chapters" expanded into four thematic
+   sections (Theory, Data, Method, Results + Robustness).
+
+2. The Introduction is designed to satisfy the exam requirement that it
+   presents the research question, explains its importance, discusses the
+   literature, material, and methods. All five elements are covered in
+   the bullet points.
+
+3. Theory/Literature is placed before Data and Method because the exam is
+   for "The Economics of Sports" -- the graders want to see that you can
+   connect your analysis to economic theory. By leading with tournament
+   theory (Rosen 1981), labour market theory (Kahn 2000), and the
+   team-as-firm framing from the lectures, you demonstrate command of the
+   course material before ever showing a regression table.
+
+4. The research question is deliberately framed around "proxy measures of
+   economic incentives and continuation costs" rather than claiming to
+   measure money directly. This is because the dataset contains no
+   financial variables (no prize money, wages, or budgets). The framing
+   is honest and defensible: you call your variables proxies, use careful
+   language ("consistent with," "suggests"), and avoid overclaiming. This
+   is the single most important thing the examiner will look for.
+
+5. The Data section includes an explicit "economic interpretation" of
+   each variable. This turns what could be a dry variable list into an
+   economics argument: GC contender = tournament incentive, race dummies
+   = event value, DNF rate = expected cost, mountain stage = marginal
+   cost of effort. This mapping is the backbone of the paper's economics
+   contribution.
+
+6. The Empirical Strategy section is separate from Results to show
+   methodological awareness. The Cox PH model is justified on its merits
+   (semi-parametric, handles censoring, models duration). The
+   time-varying extension is motivated by the economic intuition that
+   stage difficulty varies within a race. The PH assumption test (Table 4)
+   is included because it validates the model -- all p-values are above
+   0.05, so the specification is sound.
+
+7. Results are split into Basic Cox and Time-Varying Cox to show
+   progression. The basic model gives the headline findings (DNF rate,
+   GC contender, Tour de France effect). The time-varying model adds
+   nuance (mountain stages matter, some rider-level effects are absorbed).
+   An explicit "Economic Interpretation" subsection ties everything back
+   to theory.
+
+8. Robustness Checks serve two purposes:
+   (a) The sub-sample analysis (GC vs non-GC) directly tests the
+       tournament-incentive hypothesis by showing heterogeneous effects.
+       The fact that DNF rate is much stronger for GC contenders (HR=2.28)
+       than non-GC riders (HR=1.47) is a genuinely interesting economic
+       finding.
+   (b) The GC counterfactual analysis demonstrates the economic
+       consequence of selective attrition -- it reshuffles prize money,
+       UCI points, and performance signals. This moves the paper beyond
+       "what predicts DNF" into "why does DNF matter economically."
+
+9. The Conclusion is kept tight: summary, limitations, extensions. The
+   limitations paragraph is critical because it shows self-awareness about
+   what the data can and cannot say. Naming specific extensions (prize
+   money data, contract-year indicators, competing risks) signals that
+   you understand how the project could be improved.
+
+10. Tables and figures are distributed across sections rather than dumped
+    in an appendix. The exam is about analysis, and the graders want to
+    see you discuss your tables. The appendix holds supplementary material
+    and the full counterfactual table.
+
+FIGURE AND TABLE MAPPING:
+    Table 1 (summary stats)         -> Section 3.3
+    Table 2 (basic Cox)             -> Section 5.1
+    Table 3 (time-varying Cox)      -> Section 5.2
+    Table 4 (Schoenfeld test)       -> Section 4.3
+    Tables 5a/5b (subsamples)       -> Section 6.1
+    Table 6 (counterfactual)        -> Section 6.2
+    Figure 1 (KM curves)            -> Section 3.3 or Appendix
+    Figure 2 (DNF by race/year)     -> Section 3.3
+    Figure 3 (DNF by stage type)    -> Appendix
+    Figure 4 (cumulative DNF)       -> Appendix
+    Figure 5 (hazard ratio forest)  -> Section 5.1
+    Figure 6 (Schoenfeld residuals) -> Section 4.3 or Appendix
+    Figure 7 (GC vs non-GC forest)  -> Section 6.1
+    Figure 8 (counterfactual GC)    -> Section 6.2
+
+\end{comment}

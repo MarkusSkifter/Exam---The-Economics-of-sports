@@ -1,0 +1,32 @@
+% --------------------------------------------------
+% 5. RESULTS
+% --------------------------------------------------
+\section{Results}
+
+\subsection{Basic Cox Model}
+\begin{itemize}
+    \item Present Table~2 (basic Cox PH results). Focus the discussion on:
+    \begin{itemize}
+        \item \textbf{Previous DNF rate}: HR $= 1.549$, $p < 0.001$. Strongest predictor. Interpret as: riders with higher historical abandonment rates face approximately 55\% higher hazard of abandoning again. Economically, this captures rider-specific expected continuation cost or revealed fragility.
+        \item \textbf{GC contender}: HR $= 1.156$, $p = 0.008$. Counterintuitively positive. Discuss possible explanations: GC contenders ride at the physical limit and are more exposed to crashes and fatigue; teams may strategically withdraw contenders who fall out of GC contention to preserve them for future races.
+        \item \textbf{Tour de France}: HR $= 0.865$, $p = 0.002$. Riders are \emph{less} likely to abandon the Tour. Consistent with higher event value: the Tour offers the most prize money, media exposure, and UCI points, so riders and teams tolerate higher short-run costs.
+        \item Other variables (age, experience, team controls, year trend) are insignificant, which itself is informative.
+    \end{itemize}
+    \item Include Figure~5 (hazard ratio forest plot).
+\end{itemize}
+
+\subsection{Time-Varying Cox Model}
+\begin{itemize}
+    \item Present Table~3 (time-varying Cox results). Highlight:
+    \begin{itemize}
+        \item \textbf{Mountain stages}: HR $= 1.034$, $p = 0.025$. Abandonment hazard rises on mountain stages, consistent with a marginal-cost-of-effort interpretation.
+        \item \textbf{Previous DNF rate}: marginally significant ($p = 0.05$) with a smaller coefficient, suggesting that within-race stage-level variation absorbs some of the rider-level effect.
+        \item GC contender and race dummies lose significance once stage-level controls are included, which suggests the basic model captured some of the race-difficulty effect through the race dummies.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Economic Interpretation}
+\begin{itemize}
+    \item Tie the results back to the theoretical framework: the data are consistent with a model where abandonment is a rational response to the balance of incentives and costs.
+    \item Discuss the language carefully: ``consistent with,'' ``suggests,'' ``can be interpreted as,'' ``proxies for'' --- because no direct financial variables are observed.
+\end{itemize}

@@ -1,0 +1,22 @@
+\section{Empirical Strategy}
+
+\subsection{Cox Proportional Hazard Model}
+\begin{itemize}
+    \item Justify the choice of a Cox PH model: semi-parametric, does not require distributing the baseline hazard, handles right-censoring (riders who finish), and naturally models duration dependence.
+    \item Write out the hazard function: $h(t \mid \mathbf{X}) = h_0(t) \exp(\mathbf{X} \boldsymbol{\beta})$, and explain interpretation of hazard ratios ($\exp(\beta) > 1$ means higher abandonment hazard).
+    \item Explain the covariates used in the basic model: age, experience, previous DNF rate, GC contender, team size, team average age, race dummies, and a centred year trend.
+\end{itemize}
+
+\subsection{Time-Varying Extension}
+\begin{itemize}
+    \item Explain why stage-level covariates require a time-varying Cox model: the difficulty of the race changes from stage to stage, and abandonment hazard is not constant within a race.
+    \item Describe the additional time-varying covariates: stage type dummies (mountain, hilly, individual TT, team TT vs.\ flat baseline) and standardised stage distance.
+    \item Note the counting-process data structure (start-stop intervals) and the use of \texttt{CoxTimeVaryingFitter}.
+\end{itemize}
+
+\subsection{Proportional Hazards Assumption}
+\begin{itemize}
+    \item Explain the Schoenfeld residual test for the PH assumption.
+    \item Report results from Table~4: none of the covariates violate the PH assumption at the 5\% level, which validates the model specification.
+    \item Mention the Schoenfeld residual plots (Figure~6) as visual confirmation.
+\end{itemize}

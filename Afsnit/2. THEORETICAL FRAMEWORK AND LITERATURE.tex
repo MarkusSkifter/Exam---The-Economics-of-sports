@@ -1,0 +1,54 @@
+% % --------------------------------------------------
+% % 2. THEORETICAL FRAMEWORK AND LITERATURE
+% % --------------------------------------------------
+% \section{Theoretical Framework and Literature Review}
+
+% \subsection{The Economics of Rider Abandonment}
+% \begin{itemize}
+%     \item Frame rider abandonment as a rational decision under uncertainty: at each stage the rider (and team) weigh expected benefits of continuing against expected costs (fatigue, injury risk, lost future performance).
+%     \item Connect to tournament theory (Rosen, 1981): convex prize structures mean that riders near the top of the GC have disproportionately higher incentives to persist.
+%     \item Discuss the role of the team as a profit-maximising firm (Lecture F2): the team decides whether to protect a GC contender or withdraw a domestique who has served their purpose.
+% \end{itemize}
+
+% \subsection{Labour Markets and Contracts in Professional Cycling}
+% \begin{itemize}
+%     \item Connect to the sports-labour-market literature (Lectures F4 and F5; Kahn, 2000): riders operate in a competitive labour market where observable performance signals affect future contract value.
+%     \item A DNF is a negative performance signal. Riders with higher historical DNF rates may face lower marginal cost of another DNF (less reputational damage to lose), or conversely may be ``fragile types'' with higher expected physical cost.
+%     \item Discuss how race prestige (Tour de France vs.\ Vuelta) proxies for the marginal revenue product of continued participation through TV exposure, sponsor visibility, and UCI points.
+% \end{itemize}
+
+% \subsection{Related Empirical Work}
+% \begin{itemize}
+%     \item Briefly discuss existing sports-economics studies that use survival or hazard models (e.g.\ managerial dismissal in football from Lecture F6; match-fixing careers from Lecture material).
+%     \item Note the gap: few papers model within-race attrition in cycling from an economic perspective, despite the richness of stage-by-stage data.
+% \end{itemize}
+
+% --------------------------------------------------
+% 2. THEORETICAL FRAMEWORK AND LITERATURE
+% --------------------------------------------------
+\section{Theoretical Framework and Literature Review}
+\label{sec:theory}
+
+\subsection{The Economics of Rider Abandonment}
+
+A Grand Tour lasts three weeks and consists of 21 stages. At the start of each stage, every rider still in the race faces a decision: continue or abandon. This paper frames that decision as a rational choice under uncertainty, where the rider and his team compare the expected benefit of continuing against the expected cost. The benefit side includes the possibility of improving one's GC position, earning UCI points, generating sponsor exposure, and strengthening future contract negotiations. The cost side includes accumulated fatigue, the risk of injury or crash, the toll on future performance in later races, and the physical suffering of completing another stage.
+
+This framing builds on tournament theory as developed by \cite{rosen1981superstars} and \cite{lazear1981rank}. In their models, competition for rank-order prizes generates incentive effects that depend on a contestant's position relative to the prize thresholds. The key insight is that prize structures in tournaments are typically convex: the difference in reward between finishing first and second is much larger than the difference between finishing 50th and 51st. In the context of Grand Tour cycling, this means that riders near the top of the GC standings---those competing for the podium or a top-ten finish---have disproportionately more to gain from staying in the race. A rider sitting in 80th place with no realistic shot at the GC has far less to gain from completing another mountain stage, and may rationally choose to withdraw and save energy for future events.
+
+This tournament logic does not apply only to the individual rider. As discussed in the course lectures on sport clubs as profit-maximising firms (Lecture F2), teams in professional cycling operate with budget constraints and strategic objectives. A team with a strong GC contender will allocate its domestiques---support riders whose job is to shield the leader from wind, fetch water bottles, and set pace on climbs---to protect that contender's position. If the GC contender abandons, the domestiques lose their primary function for the race. Conversely, if a domestique has already fulfilled his role (for example, by pulling the peloton through the flat stages in the first week), the team may have little economic reason to keep him in the race, especially if he is carrying an injury that could worsen. In this sense, the team acts as a firm making a resource-allocation decision: withdraw the rider whose expected marginal contribution is now low, and preserve his physical capital for future races where his marginal product will be higher.
+
+\subsection{Labour Markets and Contracts in Professional Cycling}
+
+Professional cyclists operate in a labour market that shares many features with other professional sports labour markets. \cite{kahn2000labormarket} argues that professional sports provide a uniquely useful laboratory for studying labour-market questions because of the availability of detailed performance data, the transparency of compensation structures, and the repeated nature of competition. The same logic applies to Grand Tour cycling: riders produce observable output (stage results, GC rankings, race completions), and this output serves as a signal of their quality to teams negotiating future contracts.
+
+Within this framework, abandoning a race is a negative performance signal. A rider who does not finish (DNF) provides less information to the market about his ability, and the act of abandoning itself may be interpreted by teams and sponsors as evidence of fragility, poor preparation, or insufficient commitment. However, the reputational cost of a DNF is not the same for all riders. A domestique who abandons after faithfully serving his team leader for two weeks may face a very different labour-market consequence than a GC contender who abandons while sitting in fifth place. This connects to the course material on labour markets in sport (Lectures F4 and F5): the value of a performance signal depends on the context in which it is produced and the position of the worker in the team hierarchy.
+
+The dataset used in this paper includes each rider's historical DNF rate---the share of previous Grand Tours in which the rider abandoned. This variable can be interpreted in two economically distinct ways. On the one hand, a high DNF rate may indicate a ``fragile type'': a rider who, for physical or psychological reasons, faces higher expected costs of continuation, and who therefore rationally abandons more often. On the other hand, a rider who has already accumulated several DNFs may face a lower marginal reputational cost from one more, because the signal has already been sent. Both interpretations predict that previous DNF rate should be positively associated with current abandonment hazard, but for different underlying economic reasons. The empirical analysis cannot fully distinguish between these two mechanisms, but it can establish whether the relationship exists and how strong it is.
+
+Race prestige provides another economically meaningful source of variation. The Tour de France is the most prestigious and commercially valuable of the three Grand Tours. It attracts the largest television audiences, the most media coverage, and the most sponsor attention. As a result, the marginal revenue product of a rider's continued participation is likely higher in the Tour than in the Giro d'Italia or the Vuelta a Espa\~{n}a. If riders and teams respond to incentives, we would expect lower abandonment rates in the Tour de France, all else being equal, because the economic value of staying in the race is higher. This prediction is consistent with the descriptive patterns shown in Figure~\ref{fig:dnf_by_year} and will be tested formally in the Cox models. The same logic connects to the course material on advertisement and TV rights in sport (Lecture F3): broadcasting revenues and sponsor contracts are tied to participation and visibility, so the decision to continue or abandon has direct financial implications for the team even if those financial variables are not observed in the data.
+
+\subsection{Related Empirical Work}
+
+Several empirical studies in sports economics have used duration or hazard models to analyse decisions with an economic structure similar to rider abandonment. The course material on managers, coaches, and team performance (Lecture F6) discusses how managerial tenure in football can be modelled as a survival process, where the probability of dismissal at each point in time depends on match results, league position, and club characteristics. The underlying logic is the same as in this paper: an event (dismissal or abandonment) occurs at some point during a spell (a season or a race), and covariates shift the probability of that event. \cite{boeri2008italianjob} study career concerns among referees in Italian football and show how incentive structures can lead to strategic behaviour that is not directly observed but can be inferred from patterns in the data---an approach that is conceptually similar to what this paper does with rider-level proxies for incentives and costs.
+
+Outside the course material, there is a growing literature on the economics of professional cycling, but most of it focuses on doping, team strategy in individual stages, or the determinants of stage wins. Very few papers model within-race attrition from an explicitly economic perspective. This is surprising, because Grand Tours generate rich stage-by-stage panel data that are well suited to survival analysis, and because abandonment has clear economic consequences: it reshuffles the GC standings, redistributes prize money and UCI points, and affects the information content of race results as signals of rider quality. This paper aims to contribute to filling that gap by applying a standard econometric framework---Cox proportional hazard models---to a novel dataset, and by interpreting the results through the lens of tournament incentives and labour-market signalling.

@@ -1,0 +1,40 @@
+% % --------------------------------------------------
+% % 1. INTRODUCTION
+% % --------------------------------------------------
+% \section{Introduction}
+
+% \begin{itemize}
+%     \item Open with a motivating example: a prominent GC contender abandoning a Grand Tour (e.g.\ Wiggins in the 2013 Giro) and the sporting and economic consequences that followed.
+%     \item State the research question clearly: \emph{How do proxy measures of economic incentives and continuation costs explain rider abandonment in Grand Tours?}
+%     \item Briefly explain why this matters economically: Grand Tours are major labour-market events for professional cyclists; abandonment has consequences for team budgets, sponsor exposure, and rider market value.
+%     \item Preview the approach: Cox proportional hazard models on a self-scraped panel of 9{,}045 rider-race observations across all three Grand Tours (2010--2025), with time-varying stage-level covariates.
+%     \item State the main findings in one or two sentences (previous DNF rate as the strongest predictor; Tour de France lowers hazard; mountain stages raise hazard).
+%     \item Outline the paper structure: Section~2 covers theory and literature, Section~3 presents the data, Section~4 describes the method, Section~5 discusses results, Section~6 offers robustness checks, and Section~7 concludes.
+% \end{itemize}
+
+
+% --------------------------------------------------
+% 1. INTRODUCTION
+% --------------------------------------------------
+\section{Introduction}
+
+In May 2013, Bradley Wiggins---the reigning Tour de France champion---abandoned the Giro d'Italia after just seven stages. His departure was not simply a sporting story. Team Sky had built its entire Giro campaign around Wiggins, allocating domestiques, logistics, and media attention to support his General Classification (GC) bid. When he climbed off his bike, the team lost its primary investment for the race, sponsors lost three weeks of planned television exposure, and Wiggins himself saw his market value as a Grand Tour rider come under scrutiny. Episodes like this raise a question that sits at the intersection of sports and economics: what determines whether a rider continues or abandons a Grand Tour?
+
+This paper treats rider abandonment as an economic decision. At every stage of a Grand Tour, the rider and his team face a choice under uncertainty: continue and bear the physical and strategic costs, or withdraw and reallocate effort toward future races. This framing connects directly to tournament theory \cite{rosen1981superstars, lazear1981rank}, where the structure of rewards creates incentives that differ depending on a rider's position in the standings, and to the broader sports-labour-market literature \cite{kahn2000labormarket}, where observable performance signals---including finishing a race---affect a rider's future contract value.
+
+The research question is: \emph{How do proxy measures of economic incentives and continuation costs explain rider abandonment in Grand Tours?} The word ``proxy'' is important here. The dataset does not contain direct financial variables such as prize money, rider salaries, or team budgets. Instead, the analysis uses observable covariates that can be interpreted as reflecting underlying economic forces. For example, whether a rider is classified as a GC contender proxies for the expected return from continued participation, while a rider's historical abandonment rate captures rider-specific information about expected continuation costs.
+
+To answer this question, the paper draws on a self-constructed panel dataset of 9{,}045 rider-race observations covering all three Grand Tours---the Tour de France, the Giro d'Italia, and the Vuelta a Espa\~{n}a---from 2010 to 2025. The data were scraped from ProCyclingStats and include stage-by-stage results, rider profiles, and stage metadata. As Figure~\ref{fig:dnf_by_year} illustrates, abandonment rates vary both across races and over time, with the Tour de France consistently showing the lowest rates and the Giro d'Italia typically showing the highest. This variation motivates the empirical investigation: if abandonment were purely random or driven only by physical factors, we would not expect such persistent differences between races of similar length and difficulty.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Afsnit/Billeder/fig2_dnf_rate_by_race_year.png}
+    \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+The econometric approach uses Cox proportional hazard models, a standard survival-analysis framework that models the instantaneous probability of abandonment at each stage, conditional on the rider still being in the race. The basic model includes rider-level and race-level covariates such as age, experience, previous DNF rate, GC contender status, and race identity. A time-varying extension adds stage-level covariates---stage type (mountain, hilly, time trial) and distance---that change from stage to stage within a race. The proportional hazards assumption is tested using Schoenfeld residuals, and a set of robustness checks splits the sample into GC contenders and non-GC riders to examine whether the estimated effects differ across these groups.
+
+The main findings can be summarised as follows. A rider's historical DNF rate is the strongest predictor of abandonment, with a hazard ratio of 1.55 ($p < 0.001$), meaning that riders who have abandoned more often in the past face roughly 55\% higher hazard of abandoning again. This is consistent with the idea that DNF history captures rider-specific expected continuation costs---either physical fragility or a lower personal threshold for withdrawal. The Tour de France has a significantly lower abandonment hazard than the Vuelta a Espa\~{n}a (HR $= 0.865$, $p = 0.002$), which can be interpreted as reflecting the higher economic value of the Tour: more media exposure, more sponsor visibility, and more UCI points create stronger incentives to persist. In the time-varying model, mountain stages raise the hazard of abandonment (HR $= 1.034$, $p = 0.025$), consistent with the intuition that harder stages increase the marginal physical cost of staying in the race.
+
+The paper is structured as follows. Section~\ref{sec:theory} presents the theoretical framework and reviews relevant literature from sports economics and labour economics. Section~\ref{sec:data} describes the data collection and the variables used, including their economic interpretations. Section~\ref{sec:method} explains the Cox proportional hazard methodology and the time-varying extension. Section~\ref{sec:results} presents the main results and discusses their economic meaning. Section~\ref{sec:robustness} provides robustness checks, including a sub-sample analysis and a counterfactual exercise that estimates how GC standings would change if abandoned riders had continued. Section~\ref{sec:conclusion} concludes with limitations and suggestions for future research.
