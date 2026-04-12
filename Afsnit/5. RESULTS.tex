@@ -36,7 +36,14 @@ The strongest predictor is the previous DNF rate (HR $= 1.549$, $p < 0.001$), im
 
 The GC contender dummy (HR $= 1.156$, $p = 0.008$) indicates approximately 16\% higher abandonment hazard for GC contenders. Although seemingly counterintuitive, this is reconcilable with the incentive framework: GC contenders ride near their physiological ceiling and are more vulnerable to accumulated fatigue, and teams may strategically withdraw GC contenders who have fallen out of contention to preserve them for future races. In the tournament theory framework of \textcite{lazear1981rank}, the expected prize diminishes sharply once a contender falls too far behind the leader, making exit the rational response.
 
-The Tour de France dummy (HR $= 0.865$, $p = 0.002$) implies roughly 14\% lower abandonment hazard than the Vuelta. This is consistent with the event-value hypothesis: the Tour offers higher prize money, greater media coverage, and more UCI ranking points, raising the economic returns from continued participation. This connects to the media economics framework in the course material (Lecture F3): broadcasting revenues and sponsor contracts are tied to participation and visibility \parencite{blair2012sports}. The Giro d'Italia coefficient is positive but not significant. The insignificance of age, experience, and team controls suggests these do not independently predict abandonment once DNF history and GC status are accounted for. Figure~\ref{fig:hazard_ratios} in the Appendix displays the hazard ratios in a forest plot.
+The Tour de France dummy (HR $= 0.865$, $p = 0.002$) implies roughly 14\% lower abandonment hazard than the Vuelta. This is consistent with the event-value hypothesis: the Tour offers higher prize money, greater media coverage, and more UCI ranking points, raising the economic returns from continued participation. This connects to the media economics framework in the course material (Lecture F3): broadcasting revenues and sponsor contracts are tied to participation and visibility \parencite{blair2012sports}. The Giro d'Italia coefficient is positive but not significant. The insignificance of age, experience, and team controls suggests these do not independently predict abandonment once DNF history and GC status are accounted for. Figure~\ref{fig:hazard_ratios} provides a visual summary of all hazard ratios with confidence intervals.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Afsnit/Billeder/fig5_hazard_ratios.png}
+    \caption{Hazard ratios with 95\% confidence intervals from the basic Cox PH model. Points to the right of the vertical line at 1.0 indicate higher abandonment hazard; points to the left indicate a protective effect. Only the previous DNF rate (positive), GC contender (positive), and Tour de France dummy (negative) are statistically significant.}
+    \label{fig:hazard_ratios}
+\end{figure}
 
 \subsection{Time-Varying Cox Model}
 

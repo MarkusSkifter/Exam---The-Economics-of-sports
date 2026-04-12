@@ -76,13 +76,6 @@ Year (centred)      & 0.999 & [0.988, 1.011] & 0.915 & \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.80\linewidth]{Afsnit/Billeder/fig7_gc_vs_nonGC_hazard_ratios.png}
-    \caption{Hazard ratios from separate Cox PH models for GC contenders (left panel) and non-GC riders (right panel). The previous DNF rate effect is substantially larger for GC contenders, while the Tour de France protective effect is significant only for non-GC riders.}
-    \label{fig:gc_vs_nonGC}
-\end{figure}
-
 \begin{table}[H]
 \centering
 \caption{Schoenfeld residual test of the proportional hazards assumption. No covariate is significant at the 5\% level, indicating that the proportional hazards assumption is not rejected for any variable.}
@@ -108,13 +101,6 @@ Year (centred)      & 0.638 & 0.424 \\
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{Afsnit/Billeder/fig5_hazard_ratios.png}
-    \caption{Hazard ratios with 95\% confidence intervals from the basic Cox PH model. Points to the right of the vertical line at 1.0 indicate higher abandonment hazard; points to the left indicate a protective effect. Only the previous DNF rate (positive), GC contender (positive), and Tour de France dummy (negative) are statistically significant.}
-    \label{fig:hazard_ratios}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
     \includegraphics[width=0.70\linewidth]{Afsnit/Billeder/fig3_dnf_rate_by_stage_type.png}
     \caption{DNF rate by stage type across all Grand Tours and editions (2010--2025). Mountain stages show the highest abandonment rates, consistent with the time-varying Cox model result that mountain stages raise daily abandonment hazard.}
     \label{fig:dnf_by_stage_type}
@@ -132,11 +118,4 @@ Year (centred)      & 0.638 & 0.424 \\
     \includegraphics[width=0.90\linewidth]{Afsnit/Billeder/fig6_schoenfeld_residuals.png}
     \caption{Schoenfeld residual plots for each covariate in the basic Cox PH model. Under the null hypothesis of proportional hazards, the residuals should show no systematic trend over time. No covariate exhibits a clear trend, providing visual confirmation of the formal test results reported in Table~\ref{tab:schoenfeld}.}
     \label{fig:schoenfeld}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{Afsnit/Billeder/fig8_gc_counterfactual.png}
-    \caption{Counterfactual GC finishing positions for abandoned GC contenders (2010--2025). Each bar represents a rider who abandoned a Grand Tour; the counterfactual position is imputed by inserting the rider's last observed cumulative time gap into the actual final GC standings. The wide range of counterfactual positions illustrates the heterogeneity of abandonment decisions.}
-    \label{fig:counterfactual}
 \end{figure}

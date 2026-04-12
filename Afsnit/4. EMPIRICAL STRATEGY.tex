@@ -6,7 +6,7 @@
 
 \subsection{Cox Proportional Hazard Model}
 
-The central methodological choice is the Cox proportional hazard (PH) model \parencite{cox1972regression, cleves2010survival}. The model is well suited to the data for three reasons. First, it is semi-parametric: it does not require a parametric assumption about the shape of the baseline hazard, which matters because there is no strong prior about whether abandonment risk follows a Weibull or exponential distribution over stages. Second, the Cox model naturally handles right-censoring: riders who complete all 21 stages are correctly accounted for as observations where the event did not occur. Third, the model captures duration dependence through the shared baseline hazard, allowing abandonment risk to evolve across stages without imposing a functional form.
+The central methodological choice is the Cox proportional hazard (PH) model \parencite{cox1972regression, cleves2010survival}, implemented using the \texttt{lifelines} library for Python \parencite{davidson2023lifelines}. The model is well suited to the data for three reasons. First, it is semi-parametric: it does not require a parametric assumption about the shape of the baseline hazard, which matters because there is no strong prior about whether abandonment risk follows a Weibull or exponential distribution over stages. Second, the Cox model naturally handles right-censoring: riders who complete all 21 stages are correctly accounted for as observations where the event did not occur. Third, the model captures duration dependence through the shared baseline hazard, allowing abandonment risk to evolve across stages without imposing a functional form.
 
 The hazard function for rider $i$ at stage $t$ is:
 \begin{equation}
