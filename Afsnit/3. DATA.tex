@@ -43,36 +43,9 @@ The raw data were then cleaned and transformed into two analysis-ready datasets.
 
 \subsection{Variable Definitions and Economic Interpretation}
 
-Table~\ref{tab:variables} provides an overview of the variables used in the analysis. Importantly, none of these variables are direct financial measures. The dataset does not contain prize money, rider salaries, team budgets, or contract details. Instead, the variables are interpreted as proxies for the underlying economic forces described in the theoretical framework. This is a common approach in empirical sports economics, where financial data is often unavailable or incomplete, and researchers must rely on observable performance and context variables to draw inferences about incentives and costs \cite{kahn2000labormarket}.
+Table~\ref{tab:variables} in the Appendix provides a full overview of variables and their economic interpretations. Importantly, none are direct financial measures; the dataset does not contain prize money, rider salaries, or team budgets. Instead, the variables are interpreted as proxies for the underlying economic forces described in the theoretical framework, a common approach when financial data is unavailable \parencite{kahn2000labormarket}.
 
-
- 
-\begin{table}[H]
-\centering
-\caption{Variable definitions and economic interpretations.}
-\label{tab:variables}
-\small
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{@{} p{2.6cm} p{11cm} @{}}
-\toprule
-\textbf{Variable} & \textbf{Definition and interpretation} \\
-\midrule
-GC contender      & =1 if top-20 GC finish in any Grand Tour in the prior two years. \textit{Tournament incentives: higher expected returns from continuation.} \\
-Prev.\ DNF rate   & Share of prior starts ending in abandonment. \textit{Revealed risk type and continuation cost.} \\
-Age               & Rider's age at race start. \textit{Human capital: maturity and decline.} \\
-Experience        & Grand Tours started prior to current race. \textit{Human capital: knowledge and durability.} \\
-Tour de France    & =1 for TdF (Vuelta as baseline). \textit{Highest media, sponsor, and UCI point value.} \\
-Giro d'Italia     & =1 for Giro. \textit{Intermediate event prestige.} \\
-Mountain stage    & =1 if mountain stage (time-varying). \textit{Highest marginal cost of effort.} \\
-Distance (z)      & Standardised stage distance (time-varying). \textit{Physically more taxing stages.} \\
-Team size         & Riders on team at race start (7--9). \textit{Team-resource control.} \\
-Team avg.\ age    & Mean age of starting team riders. \textit{Team-resource control.} \\
-Year (centred)    & Calendar year minus sample mean. \textit{Secular abandonment trend.} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-A few of these variables deserve further comment. The GC contender flag is constructed by looking backward: a rider is classified as a GC contender for a given race if he finished in the top 20 of any Grand Tour GC classification in the two preceding calendar years. This is deliberately a backward-looking measure so that it captures the rider's status at the time of the race start, rather than his outcome during the race itself. The previous DNF rate is also backward-looking: it is computed as the share of all Grand Tour starts before the current race in which the rider abandoned. For riders starting their first Grand Tour, this variable is set to zero. Finally, the stage type dummies and distance variable are only used in the time-varying model, because they change from stage to stage within a race and cannot be assigned to a single rider-race observation.
+The key variables are: a GC contender indicator (equal to 1 if the rider finished in the top 20 of any Grand Tour GC in the two preceding years, capturing tournament incentives); the historical DNF rate (the share of prior Grand Tour starts ending in abandonment, capturing rider-specific continuation costs); race dummies for the Tour de France and Giro d'Italia with the Vuelta as baseline (proxying event value through media, sponsor, and UCI point differences); and in the time-varying model, stage-type dummies and standardised distance (proxying the marginal cost of effort). Controls include rider age, experience, team size, team average age, and a centred year trend. All backward-looking variables are computed using only pre-race information to avoid endogeneity.
 
 \subsection{Summary Statistics}
 
@@ -103,9 +76,9 @@ Race: Vuelta a Espa\~{n}a    & 3{,}014 & & & & & \\
 \end{tabular}
 \end{table}
 
-The riders in the sample have a mean age of about 29 years and have started an average of 4.3 Grand Tours before the current one. The median number of previous starts is 3, but the distribution has a long right tail: the most experienced riders have started as many as 25 Grand Tours. The mean historical DNF rate is 0.135, but the median is 0, indicating that a large share of riders have never abandoned a Grand Tour before. About 15.4\% of rider-race observations involve a GC contender, which is reasonable given that the top 20 of each race represents roughly the top 12\% of the starting field. Team size has very little variation (most teams start with 8 or 9 riders, as dictated by race regulations), and team average age clusters tightly around 29 years.
+The riders have a mean age of about 29 years and have started an average of 4.3 Grand Tours before the current one. The mean historical DNF rate is 0.135, but the median is 0, indicating that many riders have never abandoned before. About 15.4\% of observations involve a GC contender. Team size has very little variation (most teams start with 8 or 9 riders, as dictated by race regulations).
 
-Figure~\ref{fig:km_curves} shows Kaplan--Meier survival curves by Grand Tour. These non-parametric curves estimate the probability that a rider is still in the race at each stage, separately for the Tour de France, the Giro d'Italia, and the Vuelta a Espa\~{n}a. Two patterns stand out. First, the Tour de France curve lies consistently above the other two, confirming that riders are more likely to remain in the Tour at every stage. By the final stage, roughly 85\% of Tour starters are still racing, compared to about 80\% in the Giro and 81\% in the Vuelta. Second, all three curves show a steady, approximately linear decline rather than a sharp drop at any particular stage, suggesting that abandonment is spread across the race rather than concentrated at specific points. Both patterns are consistent with the economic framework: the Tour's higher survival rate fits the incentive interpretation (higher event value lowers abandonment), and the gradual decline fits a model where riders continually reassess the cost-benefit balance at each stage.
+Figure~\ref{fig:km_curves} shows Kaplan--Meier survival curves by Grand Tour. Two patterns stand out. First, the Tour de France curve lies consistently above the other two: by the final stage, roughly 85\% of Tour starters are still racing, compared to about 80\% in the Giro and 81\% in the Vuelta. Second, all three curves show a steady, approximately linear decline rather than a sharp drop at any particular stage, suggesting that abandonment is spread across the race. Both patterns are consistent with the economic framework: the Tour's higher survival rate fits the incentive interpretation, and the gradual decline fits a model where riders continually reassess the cost-benefit balance.
 
 \begin{figure}[H]
     \centering
@@ -114,4 +87,4 @@ Figure~\ref{fig:km_curves} shows Kaplan--Meier survival curves by Grand Tour. Th
     \label{fig:km_curves}
 \end{figure}
 
-Figure~\ref{fig:dnf_by_year}, already shown in the introduction, adds a temporal dimension: DNF rates fluctuate from year to year, but the Tour de France is consistently at or near the bottom. The Giro d'Italia tends to have the highest rates, particularly in years like 2010 and 2024 where rates exceeded 25\%. These year-to-year fluctuations could reflect differences in route difficulty, weather conditions, or race-specific incidents (such as major crashes), but the persistent gap between races points toward a structural difference that the econometric models will attempt to capture through the race dummies.
+Figure~\ref{fig:dnf_by_year}, already shown in the introduction, adds a temporal dimension: DNF rates fluctuate year to year, but the Tour de France is consistently at or near the bottom. The persistent gap between races points toward a structural difference that the econometric models will capture through the race dummies.
